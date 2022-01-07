@@ -1,0 +1,58 @@
+Esse link está melhor que o outro em ingles
+https://medium.com/@gilsondev/usando-o-airflow-no-heroku-562f2c5ad021
+
+
+virtualenv venv
+
+source venv/bin/activate
+pip install "apache-airflow[postgres, password]"
+
+
+pip freeze >> requirements.txt
+
+### INiciar
+
+export AIRFLOW_HOME=$PWD
+airflow db init
+
+### Executar
+
+airflow standalone
+
+Vai aparece de primeira ve zno terminal
+
+http://localhost:8080/
+
+
+standalone | Airflow is ready
+standalone | Login with username: admin  password: PTPzb6mEvDwPS5Y9
+
+
+At this point, we will need to create a file named generate_kernet_key.pythat we will use to generate a sensitive data encryption key that will be used by Airflow.
+
+
+
+arquivo generate_fernet_key.py
+
+Muda arquivo airflow.ctg 
+
+Alteramos alguns campos para
+
+
+# Here we define the path to our databa (linha 30)
+sesql_alchemy_conn = postgresql+psycopg2://postgres:postgres@localhost:5432/airflow
+
+# Airflow has some classes that can be used i.e LocalExecutor CeleryExecutor.. 
+# In this example we will use LocalExecutor (linha 24)
+executor = LocalExecutor
+
+# Here we will use our Fernet script to generate an encryption key  (linha 123)
+fernet_key = $(python3 "contrib/generate_fernet_key.py")
+
+
+
+With these settings our Airflow will use the PostgreSQL database to store the metadata of the DAGS and its executions.
+
+Now let’s remove our airflow.db file and rerun our airflow db init command so that our migrations are applied to the database.
+
+
