@@ -1,0 +1,23 @@
+2022-01-07 19:59:14,496 INFO - Starting the scheduler
+2022-01-07 19:59:14,496 INFO - Processing each file at most -1 times
+2022-01-07 19:59:14,502 INFO - Launched DagFileProcessorManager with pid: 18412
+2022-01-07 19:59:14,503 INFO - Resetting orphaned tasks for active dag runs
+2022-01-07 19:59:14,555 ERROR - Exception when executing SchedulerJob._run_scheduler_loop
+Traceback (most recent call last):
+  File "/home/rhavel/Documentos/STUDY-PROJECTS/airflow-study/projects/shritam-airflow/venv/lib/python3.9/site-packages/airflow/jobs/scheduler_job.py", line 628, in _execute
+    self._run_scheduler_loop()
+  File "/home/rhavel/Documentos/STUDY-PROJECTS/airflow-study/projects/shritam-airflow/venv/lib/python3.9/site-packages/airflow/jobs/scheduler_job.py", line 706, in _run_scheduler_loop
+    self.processor_agent.wait_until_finished()
+  File "/home/rhavel/Documentos/STUDY-PROJECTS/airflow-study/projects/shritam-airflow/venv/lib/python3.9/site-packages/airflow/dag_processing/manager.py", line 229, in wait_until_finished
+    result = self._parent_signal_conn.recv()
+  File "/home/rhavel/miniconda3/lib/python3.9/multiprocessing/connection.py", line 255, in recv
+    buf = self._recv_bytes()
+  File "/home/rhavel/miniconda3/lib/python3.9/multiprocessing/connection.py", line 419, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/rhavel/miniconda3/lib/python3.9/multiprocessing/connection.py", line 384, in _recv
+    chunk = read(handle, remaining)
+ConnectionResetError: [Errno 104] Connection reset by peer
+2022-01-07 19:59:14,590 INFO - Sending Signals.SIGTERM to group 18412. PIDs of all processes in the group: []
+2022-01-07 19:59:14,590 INFO - Sending the signal Signals.SIGTERM to group 18412
+2022-01-07 19:59:14,591 INFO - Sending the signal Signals.SIGTERM to process 18412 as process group is missing.
+2022-01-07 19:59:14,591 INFO - Exited execute loop

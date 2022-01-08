@@ -1,0 +1,23 @@
+[[34m2022-01-07 19:59:14,496[0m] {[34mscheduler_job.py:[0m596} INFO[0m - Starting the scheduler[0m
+[[34m2022-01-07 19:59:14,496[0m] {[34mscheduler_job.py:[0m601} INFO[0m - Processing each file at most -1 times[0m
+[[34m2022-01-07 19:59:14,502[0m] {[34mmanager.py:[0m163} INFO[0m - Launched DagFileProcessorManager with pid: 18412[0m
+[[34m2022-01-07 19:59:14,503[0m] {[34mscheduler_job.py:[0m1114} INFO[0m - Resetting orphaned tasks for active dag runs[0m
+[[34m2022-01-07 19:59:14,555[0m] {[34mscheduler_job.py:[0m644} ERROR[0m - Exception when executing SchedulerJob._run_scheduler_loop[0m
+Traceback (most recent call last):
+  File "/home/rhavel/Documentos/STUDY-PROJECTS/airflow-study/projects/shritam-airflow/venv/lib/python3.9/site-packages/airflow/jobs/scheduler_job.py", line 628, in _execute
+    self._run_scheduler_loop()
+  File "/home/rhavel/Documentos/STUDY-PROJECTS/airflow-study/projects/shritam-airflow/venv/lib/python3.9/site-packages/airflow/jobs/scheduler_job.py", line 706, in _run_scheduler_loop
+    self.processor_agent.wait_until_finished()
+  File "/home/rhavel/Documentos/STUDY-PROJECTS/airflow-study/projects/shritam-airflow/venv/lib/python3.9/site-packages/airflow/dag_processing/manager.py", line 229, in wait_until_finished
+    result = self._parent_signal_conn.recv()
+  File "/home/rhavel/miniconda3/lib/python3.9/multiprocessing/connection.py", line 255, in recv
+    buf = self._recv_bytes()
+  File "/home/rhavel/miniconda3/lib/python3.9/multiprocessing/connection.py", line 419, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/rhavel/miniconda3/lib/python3.9/multiprocessing/connection.py", line 384, in _recv
+    chunk = read(handle, remaining)
+ConnectionResetError: [Errno 104] Connection reset by peer[0m
+[[34m2022-01-07 19:59:14,590[0m] {[34mprocess_utils.py:[0m120} INFO[0m - Sending Signals.SIGTERM to group 18412. PIDs of all processes in the group: [][0m
+[[34m2022-01-07 19:59:14,590[0m] {[34mprocess_utils.py:[0m75} INFO[0m - Sending the signal Signals.SIGTERM to group 18412[0m
+[[34m2022-01-07 19:59:14,591[0m] {[34mprocess_utils.py:[0m89} INFO[0m - Sending the signal Signals.SIGTERM to process 18412 as process group is missing.[0m
+[[34m2022-01-07 19:59:14,591[0m] {[34mscheduler_job.py:[0m655} INFO[0m - Exited execute loop[0m
